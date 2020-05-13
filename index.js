@@ -12,12 +12,12 @@ app.use(require('body-parser').json());
 // require('./Server/Routes/getUserData')(app)
 // require('./Server/Routes/getProjectsData')(app)
 app.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(__dirname, '/Client/public/favicon.ico'))
+    res.sendFile(path.join(__dirname, '/client/public/favicon.ico'))
 })
 
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/Client/build/index.html'))
+    res.sendFile(path.join(__dirname + '/client/build/index.html'))
 })
 
 const PORT = process.env.PORT || 5000
