@@ -3,10 +3,10 @@ const cors = require('cors')
 const path = require('path')
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'Client/build')))
-// app.use(require("body-parser").text());
-// app.use(require('body-parser').urlencoded({ extended: false }));
-// app.use(require('body-parser').json());
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(require("body-parser").text());
+app.use(require('body-parser').urlencoded({ extended: false }));
+app.use(require('body-parser').json());
 // require('./Server/Services/FirebaseAdminService')
 
 // require('./Server/Routes/getUserData')(app)
