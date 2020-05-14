@@ -2,11 +2,13 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const app = express()
-
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(require("body-parser").text());
 app.use(require('body-parser').urlencoded({ extended: false }));
 app.use(require('body-parser').json());
+// Loads the FirebaseAdmin Client from the credentials
+require('./server/services/FirebaseAdminService')
+
 // require('./Server/Services/FirebaseAdminService')
 
 // require('./Server/Routes/getUserData')(app)
