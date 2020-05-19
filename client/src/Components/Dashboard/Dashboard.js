@@ -1,82 +1,29 @@
 import React from 'react'
-import logo from '../assets/logo-dark.png'
+import SideBar from '../Helpers/SideBar'
+import { SetUser } from '../../Redux/actions/index'
+import { connect } from 'react-redux'
+import * as ROUTES from '../../values/routes'
+import app from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
+        this.handleLogOut = this.handleLogOut.bind(this)
     }
     componentDidMount() {
 
     }
+    async handleLogOut(event) {
+        event.preventDefault()
+        await app.auth().signOut()
+        this.props.history.push(ROUTES.Home)
+    }
     render() {
         return (
             <>
-                <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-                    <div class="scrollbar-inner">
-                        <div class="sidenav-header  align-items-center">
-                            <a class="navbar-brand" href="javascript:void(0)">
-                                <img src={logo} class="navbar-brand-img" alt="..." />
-                            </a>
-                        </div>
-                        <div class="navbar-inner">
-                            {/* <!-- Collapse --> */}
-                            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                                {/* <!-- Nav items --> */}
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="">
-                                            <i class="ni ni-tv-2 text-primary"></i>
-                                            <span class="nav-link-text">Dashboard</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-planet text-orange"></i>
-                                            <span class="nav-link-text">Icons</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-pin-3 text-primary"></i>
-                                            <span class="nav-link-text">Google</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-single-02 text-yellow"></i>
-                                            <span class="nav-link-text">Profile</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-bullet-list-67 text-default"></i>
-                                            <span class="nav-link-text">Tables</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-key-25 text-info"></i>
-                                            <span class="nav-link-text">Login</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-circle-08 text-pink"></i>
-                                            <span class="nav-link-text">Register</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">
-                                            <i class="ni ni-send text-dark"></i>
-                                            <span class="nav-link-text">Upgrade</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                {/* <!-- Divider --> */}
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                // {/* <!-- Main content --> */ }
+                <SideBar />
+                {/* <!-- Main content --> */}
                 <div class="main-content" id="panel">
                     {/* <!-- Topnav --> */}
                     <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
@@ -303,7 +250,7 @@ class Dashboard extends React.Component {
                                                 <span>Support</span>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a href="#!" class="dropdown-item">
+                                            <a href="#!" class="dropdown-item" onClick={this.handleLogOut}>
                                                 <i class="ni ni-user-run"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -520,4 +467,14 @@ class Dashboard extends React.Component {
         )
     }
 }
-export default Dashboard
+const mapStateToProps = state => {
+    return {
+        user: state.userReducer.user
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        setUser: function (user) { dispatch(SetUser(user)) }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

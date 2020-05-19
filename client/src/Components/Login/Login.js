@@ -1,26 +1,51 @@
 import React from 'react';
-import TopLogo from '../assets/Logo.gif'
-import logo from '../assets/logo-dark.png'
+import TopLogo from '../../assets/Logo.gif'
+import logo from '../../assets/logo-dark.png'
 import swal from 'sweetalert'
-import { auth } from '../services/firebase'
+
+import { SetUser } from '../../Redux/actions/index';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+import * as ROUTES from '../../values/routes'
+import app from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
 class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             email: null,
-            password: null
+            password: null,
         }
+        this.auth = app.auth()
+        this.database = app.database()
         this.handleLogin = this.handleLogin.bind(this)
     }
+    handleRoute(route) {
+
+    }
     componentDidMount() {
-        console.log(this.props)
+        this.auth.onAuthStateChanged(user => {
+            if (user) {
+                console.log(user)
+                this.props.setUser(user)
+                this.props.history.replace({ path_name: ROUTES.Dashboard })
+            }
+        })
     }
     async handleLogin(event) {
         try {
             event.preventDefault()
-            console.log(event, this.state)
-            const user = await auth.signInWithEmailAndPassword(this.state.email, this.state.password)
-            console.log(user.user)
+            const user = await this.auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+            const dbSnapshot = await this.database.ref('admins').child(this.auth.currentUser.uid).once('value')
+            const isAdmin = dbSnapshot.val()
+            if (isAdmin) {
+                console.log(isAdmin)
+                this.props.history.push(ROUTES.Dashboard)
+            } else {
+                swal('Warning', 'This User does not have Admin Previliges', 'error')
+                await this.auth.signOut()
+            }
         } catch (err) {
             swal('Warning', err.message, 'error')
         }
@@ -28,6 +53,9 @@ class Login extends React.Component {
         // swal("Good job!", "You clicked the button!", "success");
     }
     render() {
+        if (this.props.user) {
+            return (<Redirect to="/dashboard"></Redirect>)
+        }
         return (
             <body className="bg-default">
                 {/* Nav Bar */}
@@ -164,5 +192,15 @@ class Login extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        user: state.userReducer.user
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        setUser: function (user) { dispatch(SetUser(user)) }
+    }
+}
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
