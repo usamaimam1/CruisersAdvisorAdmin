@@ -3,9 +3,7 @@ import SideBar from '../Helpers/SideBar'
 import { SetUser } from '../../Redux/actions/index'
 import { connect } from 'react-redux'
 import * as ROUTES from '../../values/routes'
-import app from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
+import app from '../../services/base'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
@@ -15,9 +13,13 @@ class Dashboard extends React.Component {
 
     }
     async handleLogOut(event) {
-        event.preventDefault()
-        await app.auth().signOut()
-        this.props.history.push(ROUTES.Home)
+        console.log(event)
+        try {
+            event.preventDefault()
+            await app.auth().signOut()
+        } catch (err) {
+            console.log(err)
+        }
     }
     render() {
         return (

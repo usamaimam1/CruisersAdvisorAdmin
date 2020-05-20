@@ -12,7 +12,7 @@ const ADMIN_CONFIG = {
     "auth_provider_x509_cert_url": process.env.FIREBASE_ADMIN_AUTH_PROVIDER_CERT_URL,
     "client_x509_cert_url": process.env.FIREBASE_ADMIN_CLIENT_CERT_URL
 }
-console.log(ADMIN_CONFIG)
+// console.log(ADMIN_CONFIG)
 admin.initializeApp({
     credential: admin.credential.cert(ADMIN_CONFIG),
     databaseURL: "https://cruisersadvisor.firebaseio.com"

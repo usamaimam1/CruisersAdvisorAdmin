@@ -6,33 +6,18 @@ import {
 import * as ROUTES from './values/routes'
 import { SetUser } from './Redux/actions';
 import { connect } from 'react-redux'
-import firebase from 'firebase'
-import app from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
+import { AuthProvider } from './services/Auth'
 import Login from './Components/Login/Login'
-import ProtectedDashboardRoute from './Components/Dashboard/ProtectedDashboardRoute'
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
 import Users from './Components/Users/Users';
 import Services from './Components/Services/Services';
-import ProtectedLoginRoute from './Components/Login/ProtectedLoginRoute';
+import Dashboard from './Components/Dashboard/Dashboard';
+import PrivateRoute from './Components/ProtectedRoute'
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 class App extends React.Component {
   constructor(props) {
     super(props)
-    if (!firebase.apps.length) {
-      const firebaseConfig = {
-        apiKey: process.env.REACT_APP_API_KEY,
-        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-        databaseURL: process.env.REACT_APP_DATABASE_URL,
-        projectId: process.env.REACT_APP_PROJECT_ID,
-        storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-        messagingSenderId: process.env.REACT_APP_MESSENGER_SENDER_ID,
-        appId: process.env.REACT_APP_APP_ID,
-        measurementId: process.env.REACT_APP_MEASUREMENT_ID
-      };
-      const app = firebase.initializeApp(firebaseConfig)
-    }
   }
   componentDidMount() {
     // console.log(auth.currentUser)
@@ -40,16 +25,19 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <AuthProvider>
         <Router>
-          <Route exact path={ROUTES.Home} component={Login} />
-          <Route path={ROUTES.Dashboard} component={ProtectedDashboardRoute} />
-          <Route path={ROUTES.ForgetPassword} component={ForgetPassword} />
-          <Route path={ROUTES.ChangePassword} component={ChangePassword} />
-          <Route path={ROUTES.Users} component={Users} />
-          <Route path={ROUTES.Services} component={Services} />
+          <div>
+            <PrivateRoute exact path={ROUTES.Home} component={Dashboard} />
+            <PrivateRoute path={ROUTES.ChangePassword} component={ChangePassword} />
+            <PrivateRoute path={ROUTES.Users} component={Users} />
+            <PrivateRoute path={ROUTES.Services} component={Services} />
+            <Route path={ROUTES.Login} component={Login} />
+            <Route path={ROUTES.ForgetPassword} component={ForgetPassword} />
+            <Route path='*' component={ErrorPage} />
+          </div>
         </Router>
-      </div>
+      </AuthProvider>
     )
   }
 }
