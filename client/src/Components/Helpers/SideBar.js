@@ -52,6 +52,12 @@ class SideBar extends React.Component {
                                         <span class="nav-link-text">Payments</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onClick={this.props.onLogOut}>
+                                        <i class="ni ni-button-power text-red"></i>
+                                        <span class="nav-link-text">Sign Out</span>
+                                    </a>
+                                </li>
                             </ul>
                             {/* <!-- Divider --> */}
                         </div>

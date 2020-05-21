@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Switch, Route, Link,
   Redirect, useHistory, useLocation
 } from "react-router-dom";
+import app from './services/base'
 import * as ROUTES from './values/routes'
 import { SetUser } from './Redux/actions';
 import { connect } from 'react-redux'
@@ -19,9 +20,13 @@ class App extends React.Component {
   constructor(props) {
     super(props)
   }
-  componentDidMount() {
+  async componentDidMount() {
+    if (app.auth().currentUser) {
+      await app.auth().signOut()
+    }
     // console.log(auth.currentUser)
     // console.log(auth)
+
   }
   render() {
     return (

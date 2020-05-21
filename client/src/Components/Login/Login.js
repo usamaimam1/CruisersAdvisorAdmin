@@ -8,6 +8,13 @@ import logo from '../../assets/logo-dark.png'
 import swal from 'sweetalert'
 import axios from 'axios'
 import { css } from "@emotion/core";
+import {
+    Button, Card, CardHeader, CardBody, FormGroup, Form, Container,
+    Input, InputGroupAddon, InputGroupText, InputGroup, Row, Col
+} from "reactstrap";
+import AuthNavBar from "../Helpers/AuthNavBar";
+import AuthFooter from "../Helpers/AuthFooter";
+import logoWhite from '../../assets/logo-dark.png'
 const override = css`
   display: block;
   margin: 0 auto;
@@ -51,141 +58,214 @@ const Login = ({ history }) => {
                     loading={loading}
                 />
             </div> :
-            <body className="bg-default">
-                {/* Nav Bar */}
-                <nav id="navbar-main" className="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
-                    <div className="container">
-                        <a className="navbar-brand" href="dashboard.html">
-                            <img src={TopLogo} />
-                        </a>
-                        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
-                            <div className="navbar-collapse-header">
-                                <div className="row">
-                                    <div className="col-6 collapse-brand">
-                                        <a href="dashboard.html">
-                                            <img src="../assets/img/brand/blue.png" />
-                                        </a>
-                                    </div>
-                                    <div className="col-6 collapse-close">
-                                        <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                                            <span></span>
-                                            <span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr className="d-lg-none" />
-                        </div> */}
-                    </div>
-                </nav>
-
+            <>
                 <div className="main-content">
-                    {/* Upper div */}
-                    <div className="header bg-gradient-primary py-7 py-lg-1 pt-lg-7">
-                        <div className="container">
-                            <div className="header-body text-center mb-7">
-                                <div className="row justify-content-center">
-                                    <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                                        <h2 style={{ fontFamily: 'poppins' }} className="text-white">Welcome! CruisersADVISORS ADMIN</h2>
-                                        {/* <p className="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p> */}
-                                    </div>
-                                </div>
+                    <AuthNavBar />
+                    <div className="header bg-gradient-info py-9 py-lg-10">
+                        <Container>
+                            <div className="header-body text-center mb-2">
+                                <Row className="justify-content-center">
+                                    <Col lg="5" md="6">
+                                        <h1 className="text-white">Welcome!</h1>
+                                    </Col>
+                                </Row>
                             </div>
-                        </div>
+                        </Container>
                         <div className="separator separator-bottom separator-skew zindex-100">
-                            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                <polygon className="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                preserveAspectRatio="none"
+                                version="1.1"
+                                viewBox="0 0 2560 100"
+                                x="0"
+                                y="0"
+                            >
+                                <polygon
+                                    className="fill-default"
+                                    points="2560 0 2560 100 0 100"
+                                />
                             </svg>
                         </div>
                     </div>
-                    {/* Sign In Div */}
-                    <div className="container mt--6 pb-5">
-                        <div className="row justify-content-center">
-                            <div className="col-lg-5 col-md-7">
-                                <div className="card bg-secondary border-0 mb-0">
-                                    <div className="card-body px-lg-5 py-lg-5">
+                    {/* Page content */}
+                    <Container className="mt--8">
+                        <Row className="justify-content-center">
+                            <Col lg="5" md="7">
+                                <Card className="bg-secondary shadow border-0">
+                                    <CardBody className="px-lg-5 py-lg-5">
                                         <div className="text-center text-muted mb-4">
-                                            <img src={logo} style={{ height: 75, width: 120 }}></img>
+                                            <img alt="..." src={logoWhite} />
                                         </div>
-                                        {/* <div text-center>
-                    <text style={{ textAlign: 'center', fontSize: 12, fontFamily: 'poppins', fontWeight: 'bold', alignSelf: 'center' }}>CruisersADVISORS ADMIN</text>
-                  </div> */}
-
-                                        <form role="form">
-                                            <div className="form-group mb-3">
-                                                <div className="input-group input-group-merge input-group-alternative">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text"><i className="ni ni-email-83"></i></span>
-                                                    </div>
-                                                    <input className="form-control" placeholder="Email" name="email" type="email" value={email} onChange={event => {
-                                                        setEmail(event.target.value);
-                                                        // console.log(event.target.value)
-                                                    }} />
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="input-group input-group-merge input-group-alternative">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text"><i className="ni ni-lock-circle-open"></i></span>
-                                                    </div>
-                                                    <input className="form-control" name="password" placeholder="Password" type="password" value={password} onChange={event => setPassword(event.target.value)} />
-                                                </div>
-                                            </div>
+                                        <Form role="form">
+                                            <FormGroup className="mb-3">
+                                                <InputGroup className="input-group-alternative">
+                                                    <InputGroupAddon addonType="prepend">
+                                                        <InputGroupText>
+                                                            <i className="ni ni-email-83" />
+                                                        </InputGroupText>
+                                                    </InputGroupAddon>
+                                                    <Input placeholder="Email" type="email" autoComplete="new-email" value={email} onChange={event => setEmail(event.target.value)} />
+                                                </InputGroup>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <InputGroup className="input-group-alternative">
+                                                    <InputGroupAddon addonType="prepend">
+                                                        <InputGroupText>
+                                                            <i className="ni ni-lock-circle-open" />
+                                                        </InputGroupText>
+                                                    </InputGroupAddon>
+                                                    <Input placeholder="Password" type="password" autoComplete="new-password" value={password} onChange={event => setPassword(event.target.value)} />
+                                                </InputGroup>
+                                            </FormGroup>
                                             <div className="custom-control custom-control-alternative custom-checkbox">
-                                                <input className="custom-control-input" id=" customCheckLogin" type="checkbox" />
-                                                <label className="custom-control-label" for="customCheckLogin">
+                                                <input
+                                                    className="custom-control-input"
+                                                    id=" customCheckLogin"
+                                                    type="checkbox"
+                                                />
+                                                <label
+                                                    className="custom-control-label"
+                                                    htmlFor=" customCheckLogin"
+                                                >
                                                     <span className="text-muted">Remember me</span>
                                                 </label>
                                             </div>
                                             <div className="text-center">
-                                                <button type="button" className="btn btn-primary my-4" onClick={handleLogin}>Sign in</button>
+                                                <Button className="my-4" color="primary" type="button" onClick={handleLogin}>
+                                                    Sign in
+                                                </Button>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="row mt-3">
-                                    <div className="col-6">
-                                        <a href="#" className="text-light"><small>Forgot password?</small></a>
-                                    </div>
-                                    {/* <div className="col-6 text-right">
-                                        <a href="#" className="text-light"><small>Create new account</small></a>
-                                    </div> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        </Form>
+                                    </CardBody>
+                                </Card>
+                                <Row className="mt-3">
+                                    <Col xs="6">
+                                        <a
+                                            className="text-light"
+                                            href="#pablo"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            <small>Forgot password?</small>
+                                        </a>
+                                    </Col>
+                                    {/* <Col className="text-right" xs="6">
+                                        <a
+                                            className="text-light"
+                                            href="#pablo"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            <small>Create new account</small>
+                                        </a>
+                                    </Col> */}
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
-                <footer className="py-5" id="footer-main">
-                    <div className="container">
-                        <div className="row align-items-center justify-content-xl-between">
-                            <div className="col-xl-6">
-                                <div className="copyright text-center text-xl-left text-muted">
-                                    &copy; 2020 <a href="https://www.creative-tim.com" className="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-                                </div>
-                            </div>
-                            <div className="col-xl-6">
-                                <ul className="nav nav-footer justify-content-center justify-content-xl-end">
-                                    <li className="nav-item">
-                                        <a href="https://www.creative-tim.com" className="nav-link" target="_blank">Creative Tim</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" className="nav-link" target="_blank">About Us</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="http://blog.creative-tim.com" className="nav-link" target="_blank">Blog</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" className="nav-link" target="_blank">MIT License</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </body >
+                <AuthFooter />
+            </>
+        // <div className="main-content">
+        //     <AuthNavBar />
+        //     <div className="header bg-gradient-info py-7 py-lg-8">
+        //         <Container>
+        //             <div className="header-body text-center mb-7">
+        //                 <Row className="justify-content-center">
+        //                     <Col lg="4" md="4">
+        //                         <h1 className="text-white">Welcome!</h1>
+        //                     </Col>
+        //                 </Row>
+        //             </div>
+        //         </Container>
+        //         <div className="separator separator-bottom separator-skew zindex-100">
+        //             <svg
+        //                 xmlns="http://www.w3.org/2000/svg"
+        //                 preserveAspectRatio="none"
+        //                 version="1.1"
+        //                 viewBox="0 0 2560 100"
+        //                 x="0"
+        //                 y="0"
+        //             >
+        //                 <polygon
+        //                     className="fill-default"
+        //                     points="2560 0 2560 100 0 100"
+        //                 />
+        //             </svg>
+        //         </div>
+        //     </div>
+        //     <Container className="mt--8 pb-5">
+        //         <Row className="justify-content-center">
+        //             <Col lg="5" md="7">
+        //                 <Card className="bg-secondary shadow border-0">
+        //                     <CardBody className="px-lg-5 py-lg-5">
+        //                         <div className="text-center text-muted mb-4">
+        //                             <small>Or sign in with credentials</small>
+        //                         </div>
+        //                         <Form role="form">
+        //                             <FormGroup className="mb-3">
+        //                                 <InputGroup className="input-group-alternative">
+        //                                     <InputGroupAddon addonType="prepend">
+        //                                         <InputGroupText>
+        //                                             <i className="ni ni-email-83" />
+        //                                         </InputGroupText>
+        //                                     </InputGroupAddon>
+        //                                     <Input placeholder="Email" type="email" autoComplete="new-email" />
+        //                                 </InputGroup>
+        //                             </FormGroup>
+        //                             <FormGroup>
+        //                                 <InputGroup className="input-group-alternative">
+        //                                     <InputGroupAddon addonType="prepend">
+        //                                         <InputGroupText>
+        //                                             <i className="ni ni-lock-circle-open" />
+        //                                         </InputGroupText>
+        //                                     </InputGroupAddon>
+        //                                     <Input placeholder="Password" type="password" autoComplete="new-password" />
+        //                                 </InputGroup>
+        //                             </FormGroup>
+        //                             <div className="custom-control custom-control-alternative custom-checkbox">
+        //                                 <input
+        //                                     className="custom-control-input"
+        //                                     id=" customCheckLogin"
+        //                                     type="checkbox"
+        //                                 />
+        //                                 <label
+        //                                     className="custom-control-label"
+        //                                     htmlFor=" customCheckLogin"
+        //                                 >
+        //                                     <span className="text-muted">Remember me</span>
+        //                                 </label>
+        //                             </div>
+        //                             <div className="text-center">
+        //                                 <Button className="my-4" color="primary" type="button">
+        //                                     Sign in
+        //                         </Button>
+        //                             </div>
+        //                         </Form>
+        //                     </CardBody>
+        //                 </Card>
+        //                 <Row className="mt-3">
+        //                     <Col xs="6">
+        //                         <a
+        //                             className="text-light"
+        //                             href="#pablo"
+        //                             onClick={e => e.preventDefault()}
+        //                         >
+        //                             <small>Forgot password?</small>
+        //                         </a>
+        //                     </Col>
+        //                     <Col className="text-right" xs="6">
+        //                         <a
+        //                             className="text-light"
+        //                             href="#pablo"
+        //                             onClick={e => e.preventDefault()}
+        //                         >
+        //                             <small>Create new account</small>
+        //                         </a>
+        //                     </Col>
+        //                 </Row>
+        //             </Col>
+        //         </Row>
+        //     </Container>
+        // </div>
     );
 };
 

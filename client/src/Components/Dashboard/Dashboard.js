@@ -10,6 +10,8 @@ import NavOptions from '../Helpers/NavOptions'
 import NavProfile from '../Helpers/NavProfile'
 import StatsDiv from '../Helpers/StatsDiv'
 import Footer from '../Helpers/Footer'
+import AdminSideBar from '../Helpers/AdminSidebar'
+import AdminNavbar from '../Helpers/AdminNavBar'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
@@ -30,64 +32,11 @@ class Dashboard extends React.Component {
     render() {
         return (
             <>
-                <SideBar />
-                {/* <!-- Main content --> */}
-                <div class="main-content" id="panel">
-                    {/* <!-- Topnav --> */}
-                    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
-                        <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                {/* <!-- Search form --> */}
-                                <NavSearch />
-                                {/* <!-- Navbar links --> */}
-                                <ul class="navbar-nav align-items-center  ml-md-auto ">
-                                    <li class="nav-item d-xl-none">
-                                        {/* <!-- Sidenav toggler --> */}
-                                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
-                                            <div class="sidenav-toggler-inner">
-                                                <i class="sidenav-toggler-line"></i>
-                                                <i class="sidenav-toggler-line"></i>
-                                                <i class="sidenav-toggler-line"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item d-sm-none">
-                                        <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
-                                            <i class="ni ni-zoom-split-in"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="ni ni-bell-55"></i>
-                                        </a>
-                                        <NavNotifications />
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="ni ni-ungroup"></i>
-                                        </a>
-                                        <NavOptions />
-                                    </li>
-                                </ul>
-                                <NavProfile onLogOut={this.handleLogOut} />
-                            </div>
-                        </div>
-                    </nav>
-                    {/* <!-- Header --> */}
-                    {/* <!-- Header --> */}
-                    <div class="header bg-primary pb-6">
-                        <div class="container-fluid">
-                            <div class="header-body">
-                                {/* <!-- Card stats --> */}
-                                <StatsDiv />
-                            </div>
-                        </div>
-                    </div>
-                    {/* <!-- Page content --> */}
-                    <div class="container-fluid mt--6">
-                        {/* <!-- Footer --> */}
-                        {/* <Footer /> */}
-                    </div>
+                <AdminSideBar onLogOut={this.handleLogOut} />
+                <div className="main-content" ref="mainContent">
+                    <AdminNavbar
+                        {...this.props}
+                    />
                 </div>
             </>
         )
