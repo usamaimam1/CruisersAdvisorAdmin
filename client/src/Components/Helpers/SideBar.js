@@ -30,13 +30,13 @@ class SideBar extends React.Component {
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" >
-                                        <i class="ni ni-planet text-orange"></i>
+                                        <i class="ni ni-delivery-fast text-orange"></i>
                                         <span class="nav-link-text">Services</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                        <i class="ni ni-pin-3 text-primary"></i>
+                                        <i class="ni ni-chart-bar-32 text-primary"></i>
                                         <span class="nav-link-text">Reviews</span>
                                     </a>
                                 </li>
@@ -48,28 +48,10 @@ class SideBar extends React.Component {
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                        <i class="ni ni-bullet-list-67 text-default"></i>
+                                        <i class="ni ni-money-coins text-green"></i>
                                         <span class="nav-link-text">Payments</span>
                                     </a>
                                 </li>
-                                {/* <li class="nav-item">
-                                    <a class="nav-link" href="">
-                                        <i class="ni ni-key-25 text-info"></i>
-                                        <span class="nav-link-text">Login</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="">
-                                        <i class="ni ni-circle-08 text-pink"></i>
-                                        <span class="nav-link-text">Register</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="">
-                                        <i class="ni ni-send text-dark"></i>
-                                        <span class="nav-link-text">Upgrade</span>
-                                    </a>
-                                </li> */}
                             </ul>
                             {/* <!-- Divider --> */}
                         </div>

@@ -15,12 +15,12 @@ class StatsDiv extends React.Component {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Services</h5>
                                     <span class="h2 font-weight-bold mb-0">350,897</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <i class="ni ni-active-40"></i>
+                                        <i class="ni ni-delivery-fast"></i>
                                     </div>
                                 </div>
                             </div>
@@ -37,12 +37,12 @@ class StatsDiv extends React.Component {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
                                     <span class="h2 font-weight-bold mb-0">2,356</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <i class="ni ni-chart-pie-35"></i>
+                                        <i class="ni ni-single-02"></i>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ class StatsDiv extends React.Component {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Payments</h5>
                                     <span class="h2 font-weight-bold mb-0">924</span>
                                 </div>
                                 <div class="col-auto">
@@ -81,7 +81,7 @@ class StatsDiv extends React.Component {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Reviews</h5>
                                     <span class="h2 font-weight-bold mb-0">49,65%</span>
                                 </div>
                                 <div class="col-auto">
