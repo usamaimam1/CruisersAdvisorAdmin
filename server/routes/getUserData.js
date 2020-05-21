@@ -5,14 +5,19 @@ module.exports = (app) => {
             const jsonReq = req.body.data
             const email = jsonReq.email
             const user = await admin.auth().getUserByEmail(email)
-            console.log(user)
             if (user) {
-                res.status(200).send('User Found')
+                const dataSnapShot = await admin.database().ref('admins').child(user.uid).once('value')
+                const isAdmin = dataSnapShot.val()
+                if (isAdmin) {
+                    res.status(200).send({ message: 'All OK' })
+                } else {
+                    res.status(401).send({ message: 'Not An Admin' })
+                }
             } else {
-                res.status(401).send({message:'Not Found'})
+                res.status(401).send({ message: 'Not Found' })
             }
         } catch (err) {
-            res.status(401).send(err.message)
+            res.status(401).send({ message: err.message })
         }
     })
 }

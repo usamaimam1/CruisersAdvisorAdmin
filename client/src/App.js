@@ -28,13 +28,15 @@ class App extends React.Component {
       <AuthProvider>
         <Router>
           <div>
-            <PrivateRoute exact path={ROUTES.Home} component={Dashboard} />
-            <PrivateRoute path={ROUTES.ChangePassword} component={ChangePassword} />
-            <PrivateRoute path={ROUTES.Users} component={Users} />
-            <PrivateRoute path={ROUTES.Services} component={Services} />
-            <Route path={ROUTES.Login} component={Login} />
-            <Route path={ROUTES.ForgetPassword} component={ForgetPassword} />
-            <Route path='*' component={ErrorPage} />
+            <Switch>
+              <PrivateRoute exact path={ROUTES.Home} component={Dashboard} />
+              <PrivateRoute exact path={ROUTES.ChangePassword} component={ChangePassword} />
+              <PrivateRoute exact path={ROUTES.Users} component={Users} />
+              <PrivateRoute exact path={ROUTES.Services} component={Services} />
+              <Route exact path={ROUTES.Login} component={Login} />
+              <Route exact path={ROUTES.ForgetPassword} component={ForgetPassword} />
+              <Route path='*' component={ErrorPage} />
+            </Switch>
           </div>
         </Router>
       </AuthProvider>

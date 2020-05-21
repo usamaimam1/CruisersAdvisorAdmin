@@ -16,42 +16,43 @@ class SideBar extends React.Component {
                             <img src={logo} class="navbar-brand-img" alt="..." />
                         </a>
                     </div>
+
                     <div class="navbar-inner">
                         {/* <!-- Collapse --> */}
                         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                             {/* <!-- Nav items --> */}
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="">
+                                    <a class="nav-link active">
                                         <i class="ni ni-tv-2 text-primary"></i>
                                         <span class="nav-link-text">Dashboard</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="#" >
                                         <i class="ni ni-planet text-orange"></i>
-                                        <span class="nav-link-text">Icons</span>
+                                        <span class="nav-link-text">Services</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="#">
                                         <i class="ni ni-pin-3 text-primary"></i>
-                                        <span class="nav-link-text">Google</span>
+                                        <span class="nav-link-text">Reviews</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="#">
                                         <i class="ni ni-single-02 text-yellow"></i>
-                                        <span class="nav-link-text">Profile</span>
+                                        <span class="nav-link-text">Users</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="#">
                                         <i class="ni ni-bullet-list-67 text-default"></i>
-                                        <span class="nav-link-text">Tables</span>
+                                        <span class="nav-link-text">Payments</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {/* <li class="nav-item">
                                     <a class="nav-link" href="">
                                         <i class="ni ni-key-25 text-info"></i>
                                         <span class="nav-link-text">Login</span>
@@ -68,7 +69,7 @@ class SideBar extends React.Component {
                                         <i class="ni ni-send text-dark"></i>
                                         <span class="nav-link-text">Upgrade</span>
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                             {/* <!-- Divider --> */}
                         </div>
