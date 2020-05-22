@@ -21,27 +21,12 @@ import {
     Col
 } from "reactstrap";
 
-// core components
-import {
-    chartOptions,
-    parseOptions,
-    chartExample1,
-    chartExample2
-} from "variables/charts.js";
-
-import Header from "components/Headers/Header.js";
 import AdminHeader from "./AdminHeader";
 
 class AdminCopy extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            activeNav: 1,
-            chartExample1Data: "data1"
-        };
-        if (window.Chart) {
-            parseOptions(Chart, chartOptions());
-        }
+
     }
     toggleNavs = (e, index) => {
         e.preventDefault();

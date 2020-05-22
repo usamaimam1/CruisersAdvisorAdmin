@@ -199,73 +199,43 @@ class AdminSideBar extends React.Component {
                         </Form>
                         {/* Navigation */}
                         <Nav navbar>
-                            <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.closeCollapse}
-                                    activeClassName="active"
-                                >
+                            <NavItem active>
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.closeCollapse} active>
                                     <i className="ni ni-tv-2 text-primary" />
-                                    Profile
+                                    Dashboard
                                 </NavLink>
                             </NavItem>
 
                             <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.closeCollapse}
-                                    activeClassName="active"
-                                >
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.closeCollapse}>
                                     <i className="ni ni-circle-08 text-yellow" />
                                     Users
                                 </NavLink>
                             </NavItem>
 
                             <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.closeCollapse}
-                                    activeClassName="active"
-                                >
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.closeCollapse}>
                                     <i className="ni ni-delivery-fast text-green" />
                                     Services
                                 </NavLink>
                             </NavItem>
 
                             <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.closeCollapse}
-                                    activeClassName="active"
-                                >
-                                    <i className="ni ni-chart-bar-32 text-pink" />
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.closeCollapse}>
+                                    <i className="ni ni-chart-bar-32 text-cyan" />
                                     Reviews
                                 </NavLink>
                             </NavItem>
 
                             <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.closeCollapse}
-                                    activeClassName="active"
-                                >
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.closeCollapse}>
                                     <i className="ni ni-money-coins text-orange" />
                                     Payments
                                 </NavLink>
                             </NavItem>
 
                             <NavItem>
-                                <NavLink
-                                    to='/'
-                                    tag={NavLinkRRD}
-                                    onClick={this.props.onLogOut}
-                                    activeClassName="active"
-                                >
+                                <NavLink to='/' tag={NavLinkRRD} onClick={this.props.onLogOut}>
                                     <i className="ni ni-button-power text-black" />
                                     LogOut
                                 </NavLink>
@@ -274,7 +244,7 @@ class AdminSideBar extends React.Component {
                         {/* Divider */}
                     </Collapse>
                 </Container>
-            </Navbar>
+            </Navbar >
         );
     }
 }

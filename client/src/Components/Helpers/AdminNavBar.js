@@ -53,7 +53,7 @@ class AdminNavbar extends React.Component {
                                         </span>
                                         <Media className="ml-2 d-none d-lg-block">
                                             <span className="mb-0 text-sm font-weight-bold">
-                                                Jessica Jones
+                                                Admin
                                             </span>
                                         </Media>
                                     </Media>
@@ -79,7 +79,7 @@ class AdminNavbar extends React.Component {
                                         <span>Support</span>
                                     </DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                                    <DropdownItem href="#pablo" onClick={this.props.onLogOut}>
                                         <i className="ni ni-user-run" />
                                         <span>Logout</span>
                                     </DropdownItem>
