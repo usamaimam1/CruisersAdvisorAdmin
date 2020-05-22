@@ -11,7 +11,7 @@ require('./server/services/FirebaseAdminService')
 
 // require('./Server/Services/FirebaseAdminService')
 
-require('./Server/Routes/getUserData')(app)
+require('./server/Routes/getUserData')(app)
 // require('./Server/Routes/getProjectsData')(app)
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/public/favicon.ico'))
